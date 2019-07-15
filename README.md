@@ -1,11 +1,13 @@
 # Plex (Dockerized)
 
-This is a basic project that makes [Plex](https://www.plex.tv/) deployment a little easier.
+This is a project that puts [Plex](https://www.plex.tv/) inside a container and is specifically designed to work with
+[this](https://github.com/sonofborge/dockerize-traefik) Traefik project.
 
 ## Requirements
 
 *   [Docker](https://docs.docker.com/install/)
 *   [Docker Compose](https://docs.docker.com/compose/install/)
+*   A linux box to deploy to ;)
 
 ## Up and Running
 
@@ -26,3 +28,13 @@ This is a basic project that makes [Plex](https://www.plex.tv/) deployment a lit
     ```sh
     docker-compose up -d
     ```
+
+1.  To completely eliminate the Portainer instance and all associated volumes.
+
+    ```bash
+    bash bin/destroy.sh
+    ```
+
+If all went well,
+you should now be running Plex inside a container behind your
+[Traefik reverse proxy](https://github.com/sonofborge/dockerize-traefik).
