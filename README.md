@@ -23,6 +23,13 @@ This is a project that puts [Plex](https://www.plex.tv/) inside a container and 
     cp .env.example .env
     ```
 
+    **Note:**
+
+    You will need to generate a plex claim code to add to your `.env` file,
+    which can be done at
+    [this](https://www.plex.tv/claim/)
+    url.
+
 1.  Run Docker Compose
 
     ```sh
