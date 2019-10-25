@@ -25,7 +25,6 @@ services:
       - "traefik.http.routers.plex.rule=Host(`plex.${DOMAIN_NAME}`)"
       - "traefik.http.routers.plex.tls.certresolver=letsencrypt"
       - "traefik.http.services.plex.loadbalancer.server.port=32400"
-      # - "traefik.port=32400"
     networks:
       - traefik_proxy
     restart: always
