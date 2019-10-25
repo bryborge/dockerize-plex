@@ -13,20 +13,33 @@ services:
     image: plexinc/pms-docker
     labels:
       - "traefik.enable=true"
-      - "traefik.backend=plexms"
-      - "traefik.frontend.rule=Host:plex.${DOMAINNAME}"
+      - "traefik.http.routers.plex.entrypoints=websecure"
+      - "traefik.http.routers.plex.rule=Host(`plex.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.plex.tls.certresolver=letsencrypt"
+      - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
+      - "traefik.http.middlewares.custom.headers.contentTypeNosniff=true"
+      - "traefik.http.middlewares.custom.headers.forceSTSHeader=true"
+      - "traefik.http.middlewares.custom.headers.frameDeny=true"
+      - "traefik.http.middlewares.custom.headers.sslredirect=true"
+      - "traefik.http.middlewares.custom.headers.stsIncludeSubdomains=true"
+      - "traefik.http.middlewares.custom.headers.stsPreload=true"
+      - "traefik.http.middlewares.custom.headers.stsSeconds=315360000"
       - "traefik.port=32400"
-      - "traefik.protocol=http"
-      - "traefik.docker.network=traefik_proxy"
-      - "traefik.frontend.headers.SSLRedirect=true"
-      - "traefik.frontend.headers.STSSeconds=315360000"
-      - "traefik.frontend.headers.browserXSSFilter=true"
-      - "traefik.frontend.headers.contentTypeNosniff=true"
-      - "traefik.frontend.headers.forceSTSHeader=true"
-      - "traefik.frontend.headers.SSLHost=example.com"
-      - "traefik.frontend.headers.STSIncludeSubdomains=true"
-      - "traefik.frontend.headers.STSPreload=true"
-      - "traefik.frontend.headers.frameDeny=true"
+      # - "traefik.enable=true"
+      # - "traefik.backend=plexms"
+      # - "traefik.frontend.rule=Host:plex.${DOMAIN_NAME}"
+      # - "traefik.port=32400"
+      # - "traefik.protocol=http"
+      # - "traefik.docker.network=traefik_proxy"
+      # - "traefik.frontend.headers.SSLRedirect=true"
+      # - "traefik.frontend.headers.STSSeconds=315360000"
+      # - "traefik.frontend.headers.browserXSSFilter=true"
+      # - "traefik.frontend.headers.contentTypeNosniff=true"
+      # - "traefik.frontend.headers.forceSTSHeader=true"
+      # - "traefik.frontend.headers.SSLHost=example.com"
+      # - "traefik.frontend.headers.STSIncludeSubdomains=true"
+      # - "traefik.frontend.headers.STSPreload=true"
+      # - "traefik.frontend.headers.frameDeny=true"
     networks:
       - traefik_proxy
     restart: always
@@ -42,8 +55,8 @@ services:
       - "32414:32414/udp"
     volumes:
       - ./app/config:/config
-      - ${USERDIR}/tmp/plex_tmp:/transcode
-      - ${USERDIR}/plex_media:/media
+      - ${USER_DIR}/tmp/plex_tmp:/transcode
+      - ${USER_DIR}/Libraries:/media
 
 networks:
   traefik_proxy:

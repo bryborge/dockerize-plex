@@ -29,12 +29,6 @@ This is a project that puts [Plex](https://www.plex.tv/) inside a container and 
     docker-compose up -d
     ```
 
-1.  To completely eliminate the Portainer instance and all associated volumes.
-
-    ```bash
-    bash bin/destroy.sh
-    ```
-
 If all went well,
 you should now be running Plex inside a container behind your
 [Traefik reverse proxy](https://github.com/sonofborge/dockerize-traefik).
