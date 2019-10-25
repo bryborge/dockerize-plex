@@ -25,21 +25,6 @@ services:
       - "traefik.http.middlewares.custom.headers.stsPreload=true"
       - "traefik.http.middlewares.custom.headers.stsSeconds=315360000"
       - "traefik.port=32400"
-      # - "traefik.enable=true"
-      # - "traefik.backend=plexms"
-      # - "traefik.frontend.rule=Host:plex.${DOMAIN_NAME}"
-      # - "traefik.port=32400"
-      # - "traefik.protocol=http"
-      # - "traefik.docker.network=traefik_proxy"
-      # - "traefik.frontend.headers.SSLRedirect=true"
-      # - "traefik.frontend.headers.STSSeconds=315360000"
-      # - "traefik.frontend.headers.browserXSSFilter=true"
-      # - "traefik.frontend.headers.contentTypeNosniff=true"
-      # - "traefik.frontend.headers.forceSTSHeader=true"
-      # - "traefik.frontend.headers.SSLHost=example.com"
-      # - "traefik.frontend.headers.STSIncludeSubdomains=true"
-      # - "traefik.frontend.headers.STSPreload=true"
-      # - "traefik.frontend.headers.frameDeny=true"
     networks:
       - traefik_proxy
     restart: always
@@ -54,6 +39,7 @@ services:
       - "32413:32413/udp"
       - "32414:32414/udp"
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - ./app/config:/config
       - ${USER_DIR}/tmp/plex_tmp:/transcode
       - ${USER_DIR}/Libraries:/media
