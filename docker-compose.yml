@@ -10,6 +10,8 @@ services:
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP=${ADVERTISE_IP}
+    expose:
+      - 32400
     image: plexinc/pms-docker
     labels:
       - "traefik.enable=true"
