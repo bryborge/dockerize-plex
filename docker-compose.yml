@@ -10,14 +10,9 @@ services:
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP=${ADVERTISE_IP}
-    expose:
-      - 32400
     image: plexinc/pms-docker
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.plex.entrypoints=websecure"
-      - "traefik.http.routers.plex.rule=Host(`plex.${DOMAIN_NAME}`)"
-      - "traefik.http.routers.plex.tls.certresolver=letsencrypt"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
       - "traefik.http.middlewares.custom.headers.contentTypeNosniff=true"
       - "traefik.http.middlewares.custom.headers.forceSTSHeader=true"
@@ -26,7 +21,11 @@ services:
       - "traefik.http.middlewares.custom.headers.stsIncludeSubdomains=true"
       - "traefik.http.middlewares.custom.headers.stsPreload=true"
       - "traefik.http.middlewares.custom.headers.stsSeconds=315360000"
-      - "traefik.port=32400"
+      - "traefik.http.routers.plex.entrypoints=websecure"
+      - "traefik.http.routers.plex.rule=Host(`plex.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.plex.tls.certresolver=letsencrypt"
+      - "traefik.http.services.plex.loadbalancer.server.port=32400"
+      # - "traefik.port=32400"
     networks:
       - traefik_proxy
     restart: always
