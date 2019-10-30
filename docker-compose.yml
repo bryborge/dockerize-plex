@@ -42,7 +42,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./app/config:/config
       - ${USER_DIR}/tmp/plex_tmp:/transcode
-      - ${USER_DIR}/Libraries:/media
+      - /media/nas:/media
 
 networks:
   traefik_proxy:
