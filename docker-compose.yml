@@ -10,7 +10,7 @@ services:
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP=${ADVERTISE_IP}
-    image: plexinc/pms-docker
+    image: plexinc/pms-docker:1.18.3.2156-349e9837e
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
