@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3"
 
 services:
   plex:
@@ -10,7 +10,7 @@ services:
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP=${ADVERTISE_IP}
-    image: plexinc/pms-docker:1.18.3.2156-349e9837e
+    image: plexinc/pms-docker:1.18.7.2457-77cb9455c
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
