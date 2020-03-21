@@ -1,6 +1,8 @@
 # Plex (Dockerized)
 
-This is a project that puts [Plex](https://www.plex.tv/) inside a container and is specifically designed to work with
+This is a project that puts
+[Plex](https://www.plex.tv/)
+inside a container and is specifically designed to work with
 [this](https://github.com/sonofborge/dockerize-traefik) Traefik project.
 
 ## Requirements
@@ -11,10 +13,10 @@ This is a project that puts [Plex](https://www.plex.tv/) inside a container and 
 
 ## Up and Running
 
-1.  Pull down the repo
+1.  Pull down the repo and change into the project directory
 
     ```sh
-    git clone https://github.com/sonofborge/dockerize-plex.git plex
+    git clone https://github.com/sonofborge/dockerize-plex.git plex && cd plex
     ```
 
 1.  Create and modify `.env` for your needs.
