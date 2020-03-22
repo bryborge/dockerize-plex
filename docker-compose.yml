@@ -71,7 +71,7 @@ services:
       - "8181:8181"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - "./app/plex_config/Library/Application Support/Plex Media Server/Logs":/plex_logs:ro
+      - ./app/plex_config/Library/Application Support/Plex Media Server/Logs:/plex_logs:ro
       - ./app/tautulli_config:/config
 
 networks:
