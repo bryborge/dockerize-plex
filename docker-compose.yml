@@ -68,10 +68,10 @@ services:
       - traefik_proxy
     restart: always
     ports:
-      - "8181:8181"
+      - "8181:8181/tcp"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./app/plex_config/Library/Application Support/Plex Media Server/Logs:/plex_logs:ro
+      - ./app/plex_config/Library/Application Support/Plex\ Media\ Server/Logs:/plex_logs:ro
       - ./app/tautulli_config:/config
 
 networks:
