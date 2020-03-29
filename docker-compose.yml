@@ -76,3 +76,5 @@ services:
 networks:
   traefik_proxy:
     external: true
+  default:
+    driver: bridge
