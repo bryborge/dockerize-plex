@@ -10,7 +10,7 @@ services:
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP=${ADVERTISE_IP}
-    image: plexinc/pms-docker:1.18.9.2571-e106a8a91
+    image: plexinc/pms-docker:1.19.1.2645-ccb6eb67e
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
@@ -50,7 +50,7 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-    image: tautulli/tautulli:v2.2.0
+    image: tautulli/tautulli:v2.2.1
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
