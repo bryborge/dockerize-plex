@@ -50,7 +50,7 @@ services:
       - TZ=${TZ}
       - PUID=${PUID}
       - PGID=${PGID}
-    image: tautulli/tautulli:v2.2.1
+    image: tautulli/tautulli:v2.5.3
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
