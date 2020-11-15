@@ -10,7 +10,7 @@ services:
       - PLEX_UID=${PUID}
       - PLEX_GID=${PGID}
       - ADVERTISE_IP=${ADVERTISE_IP}
-    image: plexinc/pms-docker:1.19.4.2935-79e214ead
+    image: plexinc/pms-docker:1.20.4.3517-ab5e1197c
     labels:
       - "traefik.enable=true"
       - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
@@ -44,38 +44,6 @@ services:
       - ${USER_DIR}/tmp/plex_tmp:/transcode
       - /media/nas:/media
 
-  tautulli:
-    container_name: tautulli
-    environment:
-      - TZ=${TZ}
-      - PUID=${PUID}
-      - PGID=${PGID}
-    image: tautulli/tautulli:v2.5.3
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.middlewares.custom.headers.browserXSSFilter=true"
-      - "traefik.http.middlewares.custom.headers.contentTypeNosniff=true"
-      - "traefik.http.middlewares.custom.headers.forceSTSHeader=true"
-      - "traefik.http.middlewares.custom.headers.frameDeny=true"
-      - "traefik.http.middlewares.custom.headers.sslredirect=true"
-      - "traefik.http.middlewares.custom.headers.stsIncludeSubdomains=true"
-      - "traefik.http.middlewares.custom.headers.stsPreload=true"
-      - "traefik.http.middlewares.custom.headers.stsSeconds=315360000"
-      - "traefik.http.routers.tautulli.entrypoints=websecure"
-      - "traefik.http.routers.tautulli.rule=Host(`tautulli.${DOMAIN_NAME}`)"
-      - "traefik.http.routers.tautulli.tls.certresolver=letsencrypt"
-      - "traefik.http.services.tautulli.loadbalancer.server.port=8181"
-    networks:
-      - traefik_proxy
-    restart: always
-    ports:
-      - "8181:8181"
-    volumes:
-      - ./app/plex_config/Library/Application Support/Plex Media Server/Logs:/plex_logs:ro
-      - ./app/tautulli_config:/config
-
 networks:
   traefik_proxy:
     external: true
-  default:
-    driver: bridge
