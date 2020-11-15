@@ -2,9 +2,7 @@
 
 This is a project that puts
 [Plex](https://www.plex.tv/)
-and
-[Tautulli](https://tautulli.com/)
-inside containers and is specifically designed to work with
+inside a container and is specifically designed to work with
 [this](https://github.com/sonofborge/dockerize-traefik) Traefik project.
 
 ## Requirements
@@ -41,7 +39,7 @@ inside containers and is specifically designed to work with
     ```
 
 If all went well,
-you should now be running Plex and Tautulli inside two containers behind your
+you should now be running Plex inside a container behind your
 [Traefik reverse proxy](https://github.com/sonofborge/dockerize-traefik).
 
 ## Add Content from a Network Share
